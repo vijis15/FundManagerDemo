@@ -6,3 +6,4 @@
 - Start up Project: FundManager
 
 Note: The commit includes binaries as well. This is not the norm, but are included if anyone wishes to run the project without compiling.
+This can be done by launching the exe: FundManager\FundManager\bin\Debug\FundManager.exe
