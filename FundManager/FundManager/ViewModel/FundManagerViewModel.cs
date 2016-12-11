@@ -40,19 +40,20 @@ namespace FundManager.ViewModel
         public override string Validate(string columnName)
         {
             string errorMessage = string.Empty;
-            if (columnName == "Price")
+            switch (columnName)
             {
-                if (string.IsNullOrEmpty(Price) || GetPriceValue(Price) <= 0)
-                {
-                    errorMessage = "Value should be a positive integer, greater than 0";
-                }
-            }
-            else if (columnName == "Quantity")
-            {
-                if (string.IsNullOrEmpty(Quantity) || GetQuantityValue(Quantity) <= 0)
-                {
-                    errorMessage = "Value should be decimal, greater than 0";
-                }
+                case "Price":
+                    if (string.IsNullOrEmpty(Price) || GetPriceValue(Price) <= 0)
+                    {
+                        errorMessage = "Value should be a positive integer, greater than 0";
+                    }
+                    break;
+                case "Quantity":
+                    if (string.IsNullOrEmpty(Quantity) || GetQuantityValue(Quantity) <= 0)
+                    {
+                        errorMessage = "Value should be decimal, greater than 0";
+                    }
+                    break;
             }
             return errorMessage;
         }

@@ -18,3 +18,6 @@ D:\Apps\New folder\Projects\FundManager\FundManager\bin\Debug\MahApps.Metro.dll
 D:\Apps\New folder\Projects\FundManager\FundManager\bin\Debug\System.Windows.Interactivity.dll
 D:\Apps\New folder\Projects\FundManager\FundManager\bin\Debug\MahApps.Metro.pdb
 D:\Apps\New folder\Projects\FundManager\FundManager\bin\Debug\MahApps.Metro.xml
+C:\Users\Vijay Yogimath\Documents\GitHub\FundManagerDemo\FundManager\FundManager\bin\Debug\FundManager.exe.config
+C:\Users\Vijay Yogimath\Documents\GitHub\FundManagerDemo\FundManager\FundManager\obj\Debug\FundManager.exe
+C:\Users\Vijay Yogimath\Documents\GitHub\FundManagerDemo\FundManager\FundManager\obj\Debug\FundManager.pdb
