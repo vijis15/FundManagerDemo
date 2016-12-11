@@ -69,7 +69,7 @@
                                          NotifyOnValidationError=True}">
                             </TextBox>
                         </StackPanel>
-                        <Button FontWeight="DemiBold" Width="70" Margin="10" Command="{Binding AddInstrumentCommand}" 
+                        <Button FontWeight="DemiBold" Width="70" Margin="10,15,10,10" Command="{Binding AddInstrumentCommand}" 
                                 HorizontalAlignment="Left">Add</Button>
                     </StackPanel>
                 </GroupBox>
@@ -96,6 +96,7 @@
                                 <DataGridTextColumn FontWeight="Normal" Header="Stock Weight (%)" Binding="{Binding Weight, StringFormat=N}" />
                             </DataGrid.Columns>
                         </DataGrid>
+                        <TextBlock FontWeight="Normal" Foreground="Red" Text="{Binding SystemMessage}"></TextBlock>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
@@ -131,6 +132,5 @@
                 </GroupBox>
             </StackPanel>
         </Grid>
-
     </Border>
 </controls:MetroWindow>
