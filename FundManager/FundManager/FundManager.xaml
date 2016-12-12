@@ -39,7 +39,7 @@
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
             <!-- I personally prefer stack panels over grids -->
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" Margin="10,0,0,0">
                 <GroupBox FontWeight="Bold" Header="Add Stock">
                     <StackPanel Margin="10">
                         <TextBlock FontWeight="Bold" FontSize="14">Stock Type</TextBlock>

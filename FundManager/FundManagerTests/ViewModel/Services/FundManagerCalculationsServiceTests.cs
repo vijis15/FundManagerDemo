@@ -64,7 +64,6 @@ namespace FundManagerTests.ViewModel.Services
             var testBond1 = InstrumentFactory.CreateStock(InstrumentTypeEnum.Bond);
             //Price and Quantity is necessary since it is necessary to derive Market Value
             //Market Value is needed for weight calculation
-            testBond1.InstrumentType = InstrumentTypeEnum.Bond;
             testBond1.Price = 10;
             testBond1.Quantity = 10;
             testInstruments.Add(testBond1);
@@ -72,7 +71,6 @@ namespace FundManagerTests.ViewModel.Services
             var testBond2 = InstrumentFactory.CreateStock(InstrumentTypeEnum.Bond);
             //Price and Quantity is necessary since it is necessary to derive Market Value
             //Market Value is needed for weight calculation
-            testBond2.InstrumentType = InstrumentTypeEnum.Bond;
             testBond2.Price = 10;
             testBond2.Quantity = 10;
             testInstruments.Add(testBond2);
@@ -81,7 +79,6 @@ namespace FundManagerTests.ViewModel.Services
             var testEquity1 = InstrumentFactory.CreateStock(InstrumentTypeEnum.Equity);
             //Price and Quantity is necessary since it is necessary to derive Market Value
             //Market Value is needed for weight calculation
-            testEquity1.InstrumentType = InstrumentTypeEnum.Equity;
             testEquity1.Price = 10;
             testEquity1.Quantity = 10;
             testInstruments.Add(testEquity1);

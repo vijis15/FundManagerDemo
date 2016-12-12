@@ -17,11 +17,8 @@ namespace FundManager.ViewModel.Services
 
         public static IFundManagerCalculationsService GetServiceInstance()
         {
-            if (_fundManagerCalculationsService == null)
-            {
-                _fundManagerCalculationsService = new FundManagerCalculationsService();
-            }
-            return _fundManagerCalculationsService;
+            return _fundManagerCalculationsService ??
+                   (_fundManagerCalculationsService = new FundManagerCalculationsService());
         }
 
         public void ReviseStockWeights(IEnumerable<IInstrument> instruments)
@@ -64,9 +61,11 @@ namespace FundManager.ViewModel.Services
                 }
 
                 //Summary at fund level
-                InstrumentSummary fundSummary = new InstrumentSummary();
-                fundSummary.InstrumentType = InstrumentTypeEnum.Fund;
-                fundSummary.TotalNumber = 1;
+                InstrumentSummary fundSummary = new InstrumentSummary
+                {
+                    InstrumentType = InstrumentTypeEnum.Fund,
+                    TotalNumber = 1 //As there is only 1 fund in this demo application
+                };
                 foreach (var instrumentLevelSummary in instrumentSummaryCollection)
                 {
                     fundSummary.TotalMarketValue += instrumentLevelSummary.TotalMarketValue;

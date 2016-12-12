@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using FundManager.Model;
 using FundManager.ViewModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -82,6 +84,17 @@ namespace FundManagerTests.ViewModel
             FundManagerViewModel viewModel = new FundManagerViewModel {Quantity = "200"};
             string error = viewModel.Validate("Quantity");
             Assert.AreEqual(string.Empty, error);
+        }
+
+        [TestMethod()]
+        public void AddBond()
+        {
+            FundManagerViewModel viewModel = new FundManagerViewModel
+            { Quantity = "200", Price = "100", InstrumentType = InstrumentTypeEnum.Bond};
+            viewModel.AddInstrumentCommand.Execute(null);
+            var firstOrDefault = viewModel.InstrumentCollection.FirstOrDefault();
+            if (firstOrDefault != null)
+                Assert.AreEqual(InstrumentTypeEnum.Bond, firstOrDefault.InstrumentType);
         }
     }
 }

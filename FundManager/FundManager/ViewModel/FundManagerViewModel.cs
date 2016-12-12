@@ -9,20 +9,17 @@ namespace FundManager.ViewModel
 {
     public class FundManagerViewModel : PropertyChangeNotifier
     {
-        public FundManagerViewModel()
-        {
-            AddInstrumentCommand = new RelayCommand(AddStock, CanExecute);
-            InstrumentCollection = new ObservableCollection<IInstrument>();
-            InstrumentSummaryCollection = new ObservableCollection<InstrumentSummary>();
-        }
+        #region Private member variables
+        private const string ErrorMessage = "System Error. Please restart application";
+        private string _systemMessage; 
+        #endregion
 
+        #region Properties
         public string Price { get; set; }
         public string Quantity { get; set; }
-
         public decimal TotalMarketValue { get; set; }
-
-        private const string ErrorMessage = "System Error.Please restart application";
-        private string _systemMessage;
+        public bool IsStockTolerant { get; set; }
+        public InstrumentTypeEnum InstrumentType { get; set; }
         public string SystemMessage
         {
             get
@@ -37,11 +34,22 @@ namespace FundManager.ViewModel
             }
         }
 
-        public InstrumentTypeEnum InstrumentType { get; set; }
+        public ObservableCollection<IInstrument> InstrumentCollection { get; set; }
+        public ObservableCollection<InstrumentSummary> InstrumentSummaryCollection { get; set; } 
+        #endregion
 
-        public bool IsStockTolerant { get; set; }
+        #region CTOR
+        public FundManagerViewModel()
+        {
+            AddInstrumentCommand = new RelayCommand(AddStock, CanExecute);
+            InstrumentCollection = new ObservableCollection<IInstrument>();
+            InstrumentSummaryCollection = new ObservableCollection<InstrumentSummary>();
+        }
+        #endregion
 
+        #region Add Instrument Command Implementation
         public ICommand AddInstrumentCommand { get; }
+
         private bool CanExecute(object arg)
         {
             try
@@ -57,40 +65,6 @@ namespace FundManager.ViewModel
             }
         }
 
-        public ObservableCollection<IInstrument> InstrumentCollection { get; set; }
-
-        public ObservableCollection<InstrumentSummary> InstrumentSummaryCollection { get; set; }
-
-        public override string Validate(string columnName)
-        {
-            try
-            {
-                string errorMessage = string.Empty;
-                switch (columnName)
-                {
-                    case "Price":
-                        if (string.IsNullOrEmpty(Price) || GetPriceValue(Price) <= 0)
-                        {
-                            errorMessage = "Value should be a positive integer, greater than 0";
-                        }
-                        break;
-                    case "Quantity":
-                        if (string.IsNullOrEmpty(Quantity) || GetQuantityValue(Quantity) <= 0)
-                        {
-                            errorMessage = "Value should be decimal, greater than 0";
-                        }
-                        break;
-                }
-                return errorMessage;
-            }
-            catch (Exception)
-            {
-                SystemMessage = ErrorMessage;
-                return String.Empty;
-                //Exceptions are to be logged
-            }
-        }
-
         private void AddStock(object obj)
         {
             try
@@ -99,7 +73,6 @@ namespace FundManager.ViewModel
                 if (stock != null)
                 {
                     // No explicit null check required for Price and Quantity as the CanExecute Method handles this
-                    stock.InstrumentType = InstrumentType;
                     stock.Price = GetPriceValue(Price);
                     stock.Quantity = GetQuantityValue(Quantity);
 
@@ -128,7 +101,41 @@ namespace FundManager.ViewModel
                 //Exceptions are to be logged
             }
         }
+        #endregion
 
+        #region UI Validations
+        public override string Validate(string columnName)
+        {
+            try
+            {
+                string errorMessage = string.Empty;
+                switch (columnName)
+                {
+                    case "Price":
+                        if (string.IsNullOrEmpty(Price) || GetPriceValue(Price) <= 0)
+                        {
+                            errorMessage = "Value should be a positive integer, greater than 0";
+                        }
+                        break;
+                    case "Quantity":
+                        if (string.IsNullOrEmpty(Quantity) || GetQuantityValue(Quantity) <= 0)
+                        {
+                            errorMessage = "Value should be decimal, greater than 0";
+                        }
+                        break;
+                }
+                return errorMessage;
+            }
+            catch (Exception)
+            {
+                SystemMessage = ErrorMessage;
+                return String.Empty;
+                //Exceptions are to be logged
+            }
+        } 
+        #endregion
+
+        #region Private Methods
         //Price is a string property on the UI to support better validation and to override a limitaion with 
         //UpdateSourceTrigger=PropertyChanged property which was not triggering correctly if user deletes the contents
         private decimal GetPriceValue(string inPrice)
@@ -163,6 +170,7 @@ namespace FundManager.ViewModel
                 return 0;
                 //Exceptions are to be logged
             }
-        }
+        } 
+        #endregion
     }
 }
