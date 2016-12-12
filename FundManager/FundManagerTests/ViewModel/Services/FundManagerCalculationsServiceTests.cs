@@ -86,7 +86,6 @@ namespace FundManagerTests.ViewModel.Services
             var testEquity2 = InstrumentFactory.CreateStock(InstrumentTypeEnum.Equity);
             //Price and Quantity is necessary since it is necessary to derive Market Value
             //Market Value is needed for weight calculation
-            testEquity2.InstrumentType = InstrumentTypeEnum.Equity;
             testEquity2.Price = 10;
             testEquity2.Quantity = 10;
             testInstruments.Add(testEquity2);

@@ -4,11 +4,16 @@ namespace FundManager.Model
 {
     public abstract class Instrument: ViewModel.PropertyChangeNotifier, IInstrument
     {
-        public InstrumentTypeEnum InstrumentType { get; set; }
+        public InstrumentTypeEnum InstrumentType { get; private set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public string Name { get; set; }
         public decimal MarketValue => Price*Quantity;
+
+        protected Instrument(InstrumentTypeEnum instrument)
+        {
+            InstrumentType = instrument;
+        }
 
         private decimal _weight;
         public decimal Weight {

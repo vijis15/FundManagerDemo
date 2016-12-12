@@ -10,5 +10,9 @@
 
         public override int Tolerance => tolerance;
         public override decimal TransactionCost => MarketValue*(decimal) (0.5/100);
+
+        public Equity() : base(InstrumentTypeEnum.Equity)
+        {
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace FundManager.ViewModel
                     // No explicit null check required for Price and Quantity as the CanExecute Method handles this
                     stock.Price = GetPriceValue(Price);
                     stock.Quantity = GetQuantityValue(Quantity);
-
+                    
                     //One can keep a separate stock count for Equity and Bond as an alternative.
                     //This approach, however will ensure that there will be no code changes required if we add a new instrument/stock type
                     int stockCount = 0;

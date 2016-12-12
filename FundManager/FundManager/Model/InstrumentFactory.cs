@@ -8,10 +8,10 @@
             switch (stockType)
             {
                 case InstrumentTypeEnum.Equity:
-                    stock = new Equity {InstrumentType = InstrumentTypeEnum.Equity};
+                    stock = new Equity();
                     break;
                 case InstrumentTypeEnum.Bond:
-                    stock = new Bond {InstrumentType = InstrumentTypeEnum.Bond};
+                    stock = new Bond();
                     break;
             }
             return stock;
